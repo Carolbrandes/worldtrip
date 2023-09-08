@@ -9,7 +9,8 @@ export function FullBanner() {
       bgImage="/images/banner01-home.png"
       bgRepeat="no-repeat"
       bgSize="cover"
-      h={335}
+      h={382}
+      mb={["2.25rem", "5.625rem"]}
     >
       <Container>
         <Flex direction="column" justifyContent="center" h="inherit">
