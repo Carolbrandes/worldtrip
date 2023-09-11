@@ -8,8 +8,8 @@ export function FullBannerSection() {
       as="section"
       bgImage="/images/banner01-home.png"
       bgRepeat="no-repeat"
-      bgSize="cover"
-      h={[220, 382]}
+      bgSize={{ base: "cover", "2xl": "contain" }}
+      h={{ base: 441, lg: 310, "2xl": 400 }}
       mb={["2.25rem", "5.625rem"]}
     >
       <Container>
