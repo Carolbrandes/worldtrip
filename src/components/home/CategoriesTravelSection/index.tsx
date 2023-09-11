@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "../Container";
+import { Container } from "../../Container";
 import { Box, SimpleGrid, useBreakpointValue } from "@chakra-ui/react";
 import { CategoriesTravelItem } from "./CategoriesTravelItem";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -48,6 +48,7 @@ export function CategoriesTravelSection() {
       <SimpleGrid columns={5} justifyContent="center">
         {categories.map((category) => (
           <CategoriesTravelItem
+            key={category.text}
             text={category.text}
             src={`/images/${category.src}`}
             alt={category.alt}
@@ -69,6 +70,7 @@ export function CategoriesTravelSection() {
         <SwiperSlide>
           <Box pb="3.25rem">
             <CategoriesTravelItem
+              key={category.text}
               text={category.text}
               src={`/images/${category.src}`}
               alt={category.alt}

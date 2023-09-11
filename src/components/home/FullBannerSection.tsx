@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import React from "react";
-import { Container } from "./Container";
+import { Container } from "../Container";
 
 export function FullBannerSection() {
   return (

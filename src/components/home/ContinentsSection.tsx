@@ -7,7 +7,7 @@ import "swiper/css";
 
 // import required modules
 import { Parallax, Pagination, Navigation } from "swiper/modules";
-import { Container } from "./Container";
+import { Container } from "../Container";
 
 export function ContinentsSection() {
   const isWideVersion = useBreakpointValue({
@@ -81,7 +81,7 @@ export function ContinentsSection() {
         className="mySwiper"
       >
         {continents.map((continent) => (
-          <SwiperSlide>
+          <SwiperSlide key={continent.title}>
             <Flex
               as="section"
               bgImage={`/images/${continent.src}`}

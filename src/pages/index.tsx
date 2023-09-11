@@ -1,6 +1,6 @@
-import { CategoriesTravelSection } from "@/components/CategoriesTravelSection";
-import { ContinentsSection } from "@/components/ContinentsSection";
-import { FullBannerSection } from "@/components/FullBannerSection";
+import { CategoriesTravelSection } from "@/components/home/CategoriesTravelSection";
+import { ContinentsSection } from "@/components/home/ContinentsSection";
+import { FullBannerSection } from "@/components/home/FullBannerSection";
 import { Divider } from "@chakra-ui/react";
 
 export default function Home() {
