@@ -1,70 +1,54 @@
 import { Container } from "@/components/Container";
-import {
-  Flex,
-  Heading,
-  Box,
-  Text,
-  Highlight,
-  Mark,
-  SimpleGrid,
-} from "@chakra-ui/react";
+import { Cities } from "@/components/continent/Cities";
+import { DatasQtd } from "@/components/continent/DatasQtd";
+import { FullBannerSection } from "@/components/continent/FullBannerSection";
+import { continents } from "@/continents";
+import { Flex, Text, SimpleGrid, Stack } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import React from "react";
 
 function Continent() {
-  const router = useRouter();
-  console.log("🚀 ~ file: [continent].tsx:6 ~ Continent ~ router:", router);
+  const { asPath } = useRouter();
+  const currentContinent = continents.find(
+    (continent) => continent.href == asPath
+  );
+
+  if (!currentContinent) return null;
 
   return (
     <>
-      <Box
-        bgImage="/images/europe.png"
-        bgRepeat="no-repeat"
-        bgSize="cover"
-        height={500}
-        mb="5rem"
-      >
-        <Container>
-          <Flex alignItems="flex-end" height="inherit">
-            <Heading as="h1" color="white" fontSize={"3rem"} pb="3.68rem">
-              Europa
-            </Heading>
-          </Flex>
-        </Container>
-      </Box>
+      <FullBannerSection
+        src={currentContinent?.src}
+        title={currentContinent?.title}
+      />
 
       <Container>
-        <SimpleGrid columns={2} spacing="4.3rem">
-          <Text fontSize="1.5rem">
-            A Europa é, por convenção, um dos seis continentes do mundo.
-            Compreendendo a península ocidental da Eurásia, a Europa geralmente
-            divide-se da Ásia a leste pela divisória de águas dos montes Urais,
-            o rio Ural, o mar Cáspio, o Cáucaso, e o mar Negro a sudeste
-          </Text>
-
-          <Flex justifyContent="space-between">
-            <Text fontSize="1.5rem" fontWeight="700" textAlign="center">
-              <Mark fontSize="3rem" color="yellow.400">
-                50
-              </Mark>{" "}
-              <br /> países
+        <Stack spacing="28" pb="36">
+          <SimpleGrid columns={[1, 2]} spacing="4.3rem">
+            <Text fontSize={["0.875rem", "1.5rem"]}>
+              {currentContinent?.ownerPage?.description}
             </Text>
 
-            <Text fontSize="1.5rem" fontWeight="700" textAlign="center">
-              <Mark fontSize="3rem" color="yellow.400">
-                60
-              </Mark>{" "}
-              <br /> línguas
-            </Text>
+            <Flex justifyContent="space-between">
+              <DatasQtd
+                type="países"
+                qtd={currentContinent?.ownerPage?.qtdCountries}
+              />
 
-            <Text fontSize="1.5rem" fontWeight="700" textAlign="center">
-              <Mark fontSize="3rem" color="yellow.400">
-                27
-              </Mark>{" "}
-              <br /> cidades +100
-            </Text>
-          </Flex>
-        </SimpleGrid>
+              <DatasQtd
+                type="línguas"
+                qtd={currentContinent?.ownerPage?.qtdLanguages}
+              />
+
+              <DatasQtd
+                type="cidades +100"
+                qtd={currentContinent?.ownerPage?.qtdCities}
+              />
+            </Flex>
+          </SimpleGrid>
+
+          <Cities cities={currentContinent?.ownerPage?.cities} />
+        </Stack>
       </Container>
     </>
   );

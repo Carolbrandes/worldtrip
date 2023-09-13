@@ -7,7 +7,7 @@ interface ContainerProps {
 
 export function Container({ children }: ContainerProps) {
   return (
-    <ContainerChackra maxW={[300, 1024]} h="inherit">
+    <ContainerChackra maxW={[350, 1024]} h="inherit">
       {children}
     </ContainerChackra>
   );
